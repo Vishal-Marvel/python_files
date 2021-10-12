@@ -1,0 +1,24 @@
+--------------------
+Date: 2:2:2021
+Time: 11:2
+Phone number: +919791077398
+Message: Total = 4CSC 02.01.2021 IS SCHEDULED FOR
+MATHS 02.01.2021 IS SCHEDULED FOR
+CHEMISTRY 02.01.2021 IS SCHEDULED FOR
+ENGLISH 02.01.2021 IS SCHEDULED FOR
+
+--------------------
+Date: 3:2:2021
+Time: 8:31
+Phone number: +919791077398
+Message: Total = 0
+
+--------------------
+Date: 20:7:2021
+Time: 17:58
+Group_id: EZT7yTYVdqL6PmxONNmS3X
+Message: 10
+secs
+to
+go
+--------------------

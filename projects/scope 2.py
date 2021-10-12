@@ -1,0 +1,11 @@
+sum()
+num1=20
+sum1()
+num1=num1+10
+sum2()
+num1=num1+15
+sum2()
+sum1()
+num1=10
+sum()
+print(num)

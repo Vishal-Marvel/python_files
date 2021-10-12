@@ -1,0 +1,384 @@
+WindowManager:
+    FirstWindow:
+    SecondWindow:
+
+<FirstWindow>:
+    name: "first"
+	BoxLayout:
+		orientation: "vertical"
+		size: root.width, root.height
+		
+		TextInput:
+			id: calc_input
+			text: "0"
+			halign: "right"
+			font_size: 85
+			size_hint: (1, .4)
+            multiline: False
+
+
+        GridLayout: 
+            cols: 4
+            rows: 5
+
+            # Row
+            Button:
+                size_hint: (.2, .2)
+                font_size: 35
+                text: "SCIENTIFIC"
+                on_release: 
+                    app.root.current = "second"
+                    root.manager.transition.direction = "left"
+
+            Button:
+                size_hint: (.2, .2)
+                font_size: 50
+                text: "C"
+                on_press: root.clear()
+
+            Button:
+                id: clear
+                size_hint: (.2, .2)
+                font_size: 50
+                text: u"\u00AB"
+                on_press: root.remove()
+                
+            Button:
+                size_hint: (.2, .2)
+                font_size: 50
+                text: "/"
+                on_press: root.math_sign("/")
+
+            # Row
+            Button:
+                size_hint: (.2, .2)
+                font_size: 50
+                text: "7"
+                background_color: (157/255, 157/255, 157/255, 1)
+                on_press: root.button_press(7)
+
+            Button:
+                size_hint: (.2, .2)
+                font_size: 50
+                text: "8"
+                background_color: (157/255, 157/255, 157/255, 1)
+                on_press: root.button_press(8)
+
+            Button:
+                size_hint: (.2, .2)
+                font_size: 50
+                text: "9"
+                background_color: (157/255, 157/255, 157/255, 1)
+                on_press: root.button_press(9)
+
+            Button:
+                size_hint: (.2, .2)
+                font_size: 50
+                text: "x"
+                on_press: root.math_sign("*")
+
+            # Row
+            Button:
+                size_hint: (.2, .2)
+                font_size: 50
+                text: "4"
+                background_color: (157/255, 157/255, 157/255, 1)
+                on_press: root.button_press(4)
+
+            Button:
+                size_hint: (.2, .2)
+                font_size: 50
+                text: "5"
+                background_color: (157/255, 157/255, 157/255, 1)
+                on_press: root.button_press(5)
+
+            Button:
+                size_hint: (.2, .2)
+                font_size: 50
+                text: "6"
+                background_color: (157/255, 157/255, 157/255, 1)
+                on_press: root.button_press(6)
+
+            Button:
+                size_hint: (.2, .2)
+                font_size: 50
+                text: "-"
+                on_press: root.math_sign("-")
+
+            # Row
+            Button:
+                size_hint: (.2, .2)
+                font_size: 50
+                text: "1"
+                background_color: (157/255, 157/255, 157/255, 1)
+                on_press: root.button_press(1)
+
+            Button:
+                size_hint: (.2, .2)
+                font_size: 50
+                text: "2"
+                background_color: (157/255, 157/255, 157/255, 1)
+                on_press: root.button_press(2)
+
+            Button:
+                size_hint: (.2, .2)
+                font_size: 50
+                text: "3"
+                background_color: (157/255, 157/255, 157/255, 1)
+                on_press: root.button_press(3)
+
+            Button:
+                size_hint: (.2, .2)
+                font_size: 50
+                text: "+"
+                on_press: root.math_sign("+")
+
+            # Row
+            Button:
+                size_hint: (.2, .2)
+                font_size: 50
+                text: "+/-"
+                background_color: (157/255, 157/255, 157/255, 1)
+                on_press: root.pos_neg()
+
+            Button:
+                size_hint: (.2, .2)
+                font_size: 50
+                text: "0"
+                background_color: (157/255, 157/255, 157/255, 1)
+                on_press: root.button_press(0)
+
+            Button:
+                size_hint: (.2, .2)
+                font_size: 50
+                text: "."
+                background_color: (157/255, 157/255, 157/255, 1)
+                on_press: root.dot()
+
+            Button:
+                size_hint: (.2, .2)
+                font_size: 50
+                text: "="
+                on_press: root.equals()
+
+
+
+<SecondWindow>:
+    name: "second"
+    BoxLayout:
+		orientation: "vertical"
+		size: root.width, root.height
+		
+		TextInput:
+			id: calc_input
+			text: "0"
+			halign: "right"
+			font_size: 85
+			size_hint: (1, .4)
+            multiline: False
+        
+        GridLayout:
+            cols: 5
+            rows: 6
+
+            # Row
+            Button:
+                size_hint: (.2, .2)
+                font_size: 25
+                text: "STANDARD"
+                on_release: 
+                    app.root.current = "first"
+                    root.manager.transition.direction = "right"
+
+            Button:
+                text: "10^"
+                size_hint: (.2, .2)
+                font_size: 35
+                on_press: root.math_sign("10^")
+
+            Button:
+                text: "10^"
+                size_hint: (.2, .2)
+                font_size: 35
+                on_press: root.math_sign("10^")
+
+            Button:
+                text: "10^"
+                size_hint: (.2, .2)
+                font_size: 35
+                on_press: root.math_sign("10^") 
+
+            Button:
+                text: "10^"
+                size_hint: (.2, .2)
+                font_size: 35
+                on_press: root.math_sign("10^")
+
+            Button:
+                text: "10^"
+                size_hint: (.2, .2)
+                font_size: 35
+                on_press: root.math_sign("10^")
+
+            Button:
+                text: "10^"
+                size_hint: (.2, .2)
+                font_size: 35
+                on_press: root.math_sign("10^")
+                
+            Button:
+                text: "10^"
+                size_hint: (.2, .2)
+                font_size: 35
+                on_press: root.math_sign("10^")
+
+            Button:
+                text: "10^"
+                size_hint: (.2, .2)
+                font_size: 35
+                on_press: root.math_sign("10^")
+
+            Button:
+                text: "10^"
+                size_hint: (.2, .2)
+                font_size: 35
+                on_press: root.math_sign("10^")
+                                
+            Button:
+                text: "10^"
+                size_hint: (.2, .2)
+                font_size: 35
+                on_press: root.math_sign("10^")
+
+            Button:
+                size_hint: (.2, .2)
+                font_size: 50
+                text: "C"
+                on_press: root.clear()
+
+            Button:
+                id: clear
+                size_hint: (.2, .2)
+                font_size: 50
+                text: u"\u00AB"
+                on_press: root.remove()
+                
+            Button:
+                size_hint: (.2, .2)
+                font_size: 50
+                text: "/"
+                on_press: root.math_sign("/")
+
+            # Row
+            Button:
+                size_hint: (.2, .2)
+                font_size: 50
+                text: "7"
+                background_color: (157/255, 157/255, 157/255, 1)
+                on_press: root.button_press(7)
+
+            Button:
+                size_hint: (.2, .2)
+                font_size: 50
+                text: "8"
+                background_color: (157/255, 157/255, 157/255, 1)
+                on_press: root.button_press(8)
+
+            Button:
+                size_hint: (.2, .2)
+                font_size: 50
+                text: "9"
+                background_color: (157/255, 157/255, 157/255, 1)
+                on_press: root.button_press(9)
+
+            Button:
+                size_hint: (.2, .2)
+                font_size: 50
+                text: "x"
+                on_press: root.math_sign("*")
+
+            # Row
+            Button:
+                size_hint: (.2, .2)
+                font_size: 50
+                text: "4"
+                background_color: (157/255, 157/255, 157/255, 1)
+                on_press: root.button_press(4)
+
+            Button:
+                size_hint: (.2, .2)
+                font_size: 50
+                text: "5"
+                background_color: (157/255, 157/255, 157/255, 1)
+                on_press: root.button_press(5)
+
+            Button:
+                size_hint: (.2, .2)
+                font_size: 50
+                text: "6"
+                background_color: (157/255, 157/255, 157/255, 1)
+                on_press: root.button_press(6)
+
+            Button:
+                size_hint: (.2, .2)
+                font_size: 50
+                text: "-"
+                on_press: root.math_sign("-")
+
+            # Row
+            Button:
+                size_hint: (.2, .2)
+                font_size: 50
+                text: "1"
+                background_color: (157/255, 157/255, 157/255, 1)
+                on_press: root.button_press(1)
+
+            Button:
+                size_hint: (.2, .2)
+                font_size: 50
+                text: "2"
+                background_color: (157/255, 157/255, 157/255, 1)
+                on_press: root.button_press(2)
+
+            Button:
+                size_hint: (.2, .2)
+                font_size: 50
+                text: "3"
+                background_color: (157/255, 157/255, 157/255, 1)
+                on_press: root.button_press(3)
+
+            Button:
+                size_hint: (.2, .2)
+                font_size: 50
+                text: "+"
+                on_press: root.math_sign("+")
+
+            # Row
+            Button:
+                size_hint: (.2, .2)
+                font_size: 50
+                text: "+/-"
+                background_color: (157/255, 157/255, 157/255, 1)
+                on_press: root.pos_neg()
+
+            Button:
+                size_hint: (.2, .2)
+                font_size: 50
+                text: "0"
+                background_color: (157/255, 157/255, 157/255, 1)
+                on_press: root.button_press(0)
+
+            Button:
+                size_hint: (.2, .2)
+                font_size: 50
+                text: "."
+                background_color: (157/255, 157/255, 157/255, 1)
+                on_press: root.dot()
+
+            Button:
+                size_hint: (.2, .2)
+                font_size: 50
+                text: "="
+                on_press: root.equals()
+
+
