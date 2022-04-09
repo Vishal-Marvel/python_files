@@ -1,4 +1,5 @@
 from selenium import webdriver
+import selenium
 from selenium.common.exceptions import ElementClickInterceptedException, NoSuchElementException, StaleElementReferenceException, NoSuchFrameException
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
@@ -8,6 +9,9 @@ import time, pywhatkit, pyttsx3
 from datetime import datetime
 from tkinter import messagebox
 from datetime import datetime
+import winsound
+duration = 1000  # milliseconds
+freq = 440  # Hz
 
 
 WINDOW_SIZE = "1080,800"
@@ -42,16 +46,17 @@ driver = webdriver.Chrome('D:/downloads/chromedriver.exe', chrome_options=option
 # time.sleep(4)
 
 
-driver.get("https://learning.edx.org/course/course-v1:IBM+CB0103EN+2T2021/block-v1:IBM+CB0103EN+2T2021+type@sequential+block@bee2083c266e4699bae764753290bf7e/block-v1:IBM+CB0103EN+2T2021+type@vertical+block@23604f7824db4bcfb2722a61b6736d39")
+driver.get("https://learning.edx.org/course/course-v1:IBM+DS0101EN+2T2021/block-v1:IBM+DS0101EN+2T2021+type@sequential+block@170bd95e77ea436e8c7b1e5c6b9b1867/block-v1:IBM+DS0101EN+2T2021+type@vertical+block@0a5125d5d33e44e7bb471886a903e29d")
 url_count = 0
 # driver.switch_to.frame('unit-iframe')
 
 # iframe = driver.find_elements_by_tag_name('iframe')
 # print(iframe)
 while True:
+    winsound.Beep(freq, duration)
     url_count += 1
-    print(driver.current_url, datetime.now(), url_count)
-    time.sleep(5)
+    print(driver.current_url, datetime.now(), url_count, sep='\n')
+    time.sleep(7)
     tot_time = ''
     try:
         driver.switch_to.frame('unit-iframe')
@@ -77,9 +82,10 @@ while True:
         for frame in iframe:
             try:
                 driver.switch_to.frame(frame)
-                # driver.find_element_by_xpath("//*[@id=\"movie_player\"]/div[4]/button").click()
-                driver.find_element_by_id('movie_player').click()
-
+                driver.find_element_by_xpath("//*[@id=\"movie_player\"]/div[4]/button").click()
+                # butt = driver.find_element_by_id('movie_player')
+                # driver.execute_script('arguments[0].click()', butt)
+                time.sleep(7)
                 break
             except NoSuchElementException as e:
                 # messagebox.showerror('error', str(e))
@@ -91,8 +97,14 @@ while True:
                 messagebox.showerror('error', str(e))
                 pass
     elif tot_time == '0:00':
-        driver.find_element_by_xpath('//button[@class="control video_control play"]').click()
-        time.sleep(5)
+        try:
+            driver.find_element_by_xpath('/html/body/div[4]/div/section/main/div/div/div[2]/div/div/div[2]/div[1]/div[5]/div[2]/div[1]/button').click()
+            # but = driver.find_element_by_xpath('/html/body/div[4]/div/section/main/div/div/div[2]/div/div/div[2]/div[1]/div[5]/div[2]/div[1]/button')
+
+            # driver.execute_script('arguments[0].click()', but)
+            time.sleep(5)
+        except NoSuchElementException:
+            pass
 
     driver.switch_to.default_content()
     driver.switch_to.frame('unit-iframe')
@@ -113,7 +125,7 @@ while True:
                 if present_time == tot_time != '0:00':
                     break
                 else:
-                    if li:
+                    if li and not present_time == '0:00':
                         driver.find_element_by_xpath('//ol[@class="subtitles-menu"]/li[{}]/span'.format(count)).click()
                         
                         time.sleep(5)
@@ -139,5 +151,7 @@ while True:
     except Exception as e:
         messagebox.showerror('error', str(e))
     driver.switch_to.default_content()
-    driver.find_element_by_xpath('//*[@id="main-content"]/div[2]/div[2]/div[1]/div/div/div/div[2]/button[2]').click()
+    button = driver.find_element_by_xpath('//*[@id="main-content"]/div[2]/div[2]/div[1]/div/div/div/div[2]/button[2]')
+    driver.execute_script('arguments[0].click()', button)
+    
     

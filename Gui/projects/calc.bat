@@ -1,1 +1,1 @@
-python "F:/vishal/codings/python files/PycharmProjects/Gui/projects/GUI_CALC.py" %*
+python "F:/codings/python files/Gui/projects/GUI_CALC.py" %*

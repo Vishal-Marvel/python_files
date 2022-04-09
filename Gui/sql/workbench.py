@@ -1,5 +1,3 @@
-from os import stat
-from re import T, escape
 from tkinter import *
 import tkinter as tk
 from tkinter import ttk, tix
@@ -162,7 +160,7 @@ class Login:
     def initiate(self):
         self.login = Tk()
         self.login.title('WorkBench')
-        self.login.geometry("500x420")
+        self.login.geometry("500x460")
         # self.login.resizable(height=False, width=False)  
         login_frame = Frame(self.login)
         login_frame.pack(pady=20, padx=20, fill="both")
@@ -986,7 +984,7 @@ class ViewTable:
             self.columns = []
             for i in self.table_details:
                 if i[5]:
-                    self.primary_key = i[1]
+                    self.primary_key.append(i[1])
                 self.columns.append(i[1])
 
         self.primary_key_index = [self.columns.index(i) for i in self.primary_key]
